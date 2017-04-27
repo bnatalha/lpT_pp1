@@ -6,7 +6,7 @@ INC =-I include
 .PHONY: all init val clean
 
 #compilar tudo.
-all: init bin/main.cpp clean
+all: init bin/main clean
 
 #verifica se existe as pasta bin no diretorio atual e, caso não exita, a cria.
 init:
@@ -20,16 +20,21 @@ doc: Doxyfile
 
 #checar vazamento de memoria.
 val:
-	valgrind --leak-check=yes bin/main.cpp
+	valgrind --leak-check=yes bin/main
 
 #gerar executaveis.
-bin/main.cpp: bin/main.o
+bin/main: bin/main.o bin/myMatrix.o
 	g++ $^ -o $@
 
 #gerar objetos.
 bin/main.o: src/main.cpp
 	g++ $(CPPFLAGS) $< $(INC) -c -o $@
 
+bin/myMatrix.o: src/myMatrix.cpp
+	g++ $(CPPFLAGS) $< $(INC) -c -o $@
+
+#bin/myMatrix_fun.o: src/myMatrix_fun.cpp
+#	g++ $(CPPFLAGS) $< $(INC) -c -o $@
 
 #remover .o's.
 clean:
