@@ -14,12 +14,12 @@ void printM(int **M, const int n);
 void deleteM(int **&M, const int n);
 int** copyM(int **&M, const int n);
 void copy_partitionM(
-	int **&M_partition, 
-	const int partition_size, 
 	int **&M, 
-	const int col, 
-	const int lin, 
-	operationM param);
+	int **&M_partition, 
+	const int &partition_size, 
+	const int &col, 
+	const int &lin, 
+	const operationM &param);
 
 #include "myMatrix_fun.h"
 

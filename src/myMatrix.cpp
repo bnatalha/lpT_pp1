@@ -60,14 +60,14 @@ int** copyM(int **&M, const int n){
 void copy_partitionM(
 	int **&M, 
 	int **&M_partition, 
-	const int partition_size, 
-	const int col, 
-	const int lin, 
-	operationM param)
+	const int &partition_size, 
+	const int &lin, 
+	const int &col, 
+	const operationM &param)
 {
-	for (int i = lin; i < partition_size; ++i)
+	for (int i = 0; i < partition_size; ++i)
 	{
-		for (int j = col; j < partition_size; ++j)
+		for (int j = 0; j < partition_size; ++j)
 		{
 			if(param == Divide)
 	 			M_partition[i][j] = M[lin+i][col+j];

@@ -21,7 +21,7 @@ int main(int argc, char const *argv[])
 	
 	int **A = NULL;
 	int **B = NULL;
-	int n = 1;
+	int n = 4;
 	int soma = 0;
 
 	buildM(A,n);
@@ -37,12 +37,13 @@ int main(int argc, char const *argv[])
 
 	int **C = NULL;
 
-	C = multiplicaI(A,B,n);
-/*
-	// Se C ja tiver apontando pra 'algo', deletar 'algo' and de apontar C para um novo lugar.
-	deleteM(C,n);
-*/
-	//C = multiplicaR(A,B,n);
+//	C = multiplicaI(A,B,n);
+//	cout << "C:" << endl;
+//	printM(C,n);
+	// Se C ja tiver apontando pra 'algo', deletar 'algo' antes de apontar C para um novo lugar.
+//	deleteM(C,n);
+
+	C = multiplicaR(A,B,n);
 	cout << "C:" << endl;
 	printM(C,n);
 
