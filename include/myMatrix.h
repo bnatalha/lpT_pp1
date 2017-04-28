@@ -12,6 +12,9 @@ template <typename T>
 void buildM(T **&M, const int n);
 
 template <typename T>
+void vector_buildM(T ***&M, const int n);
+
+template <typename T>
 void fillM(T **&M, const int n, T &soma);
 
 template <typename T>
@@ -19,6 +22,9 @@ void printM(T **M, const int n);
 
 template <typename T>
 void deleteM(T **&M, const int n);
+
+template <typename T>
+void vector_deleteM(T **&M, const int n);
 
 template <typename T>
 T** copyM(T **&M, const int n);

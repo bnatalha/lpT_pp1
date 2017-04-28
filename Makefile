@@ -1,12 +1,22 @@
 ##by @bnatalha.
 
-CPPFLAGS += -Wall -std=c++11 -ansi -pedantic -O0 -g
+# -ansi: "In C++ mode, it is equivalent to `-std=c++98'."
+# https://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/C-Dialect-Options.html#C-Dialect-Options
+CPPFLAGS += -Wall -std=c++11 -pedantic
+#-ansi -O0 -g
 INC =-I include
 
-.PHONY: all init val clean
+.PHONY: all init val clean test
 
 #compilar tudo.
 all: init bin/main clean
+
+#compila test
+test: init bin/counting clean
+
+#roda test
+vai: bin/counting
+	bin/counting
 
 #verifica se existe as pasta bin no diretorio atual e, caso não exita, a cria.
 init:
@@ -26,12 +36,15 @@ val:
 bin/main: bin/main.o
 	g++ $^ -o $@
 
+bin/counting: bin/counting.o
+	g++ $^ -o $@
+
 #gerar objetos.
 bin/main.o: src/main.cpp
 	g++ $(CPPFLAGS) $< $(INC) -c -o $@
 
-#bin/myMatrix_fun.o: src/myMatrix_fun.cpp
-#	g++ $(CPPFLAGS) $< $(INC) -c -o $@
+bin/counting.o: test/counting.cpp
+	g++ $(CPPFLAGS) $< $(INC) -c -o $@
 
 #remover .o's.
 clean:
