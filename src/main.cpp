@@ -8,7 +8,7 @@
 */
 #include "header.h"
 #include "myMatrix.h"	// para buildM(), fillM(), printM(), deleteM;
-//#include "myMatrix_fun.h"	// para multiplicaR(), multiplicaI();
+#include "myMatrix_calc.h"	// para multiplicaR(), multiplicaI();
 
 /**
 * @brief Função main

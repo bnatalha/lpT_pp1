@@ -23,14 +23,11 @@ val:
 	valgrind --leak-check=yes bin/main
 
 #gerar executaveis.
-bin/main: bin/main.o bin/myMatrix.o
+bin/main: bin/main.o
 	g++ $^ -o $@
 
 #gerar objetos.
 bin/main.o: src/main.cpp
-	g++ $(CPPFLAGS) $< $(INC) -c -o $@
-
-bin/myMatrix.o: src/myMatrix.cpp
 	g++ $(CPPFLAGS) $< $(INC) -c -o $@
 
 #bin/myMatrix_fun.o: src/myMatrix_fun.cpp

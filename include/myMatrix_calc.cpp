@@ -1,4 +1,14 @@
-#include "myMatrix.h"
+/**
+* @brief myMatrix_calc.tpp
+* @details Implementaões das funções em myMatrix_calc.h
+* @author Natália Azevedo de Brito (https://github.com/bnatalha)
+* @since 27/04/17
+* @date --
+* @sa http://stackoverflow.com/questions/495021/
+*/
+#ifndef MYMATRIX_CALC_CPP
+#define MYMATRIX_CALC_CPP
+#include "myMatrix_calc.h"
 
 /**
 * @brief Projeto de Programação I
@@ -76,7 +86,6 @@ T** somaI(T** A, T** B, int n)
 * @param n Dimensao das matrizes de entrada
 * @return Matriz produto resultante da multiplicacao
 */
-
 template <typename T>
 T** multiplicaR(T** A, T** B, int n)
 {
@@ -150,3 +159,5 @@ T** multiplicaR(T** A, T** B, int n)
 
 	return C;
 }
+
+#endif

@@ -8,19 +8,30 @@ enum operationM{
 	Unite = 1
 };
 
-void buildM(int **&M, const int n);
-void fillM(int **&M, const int n, int &soma);
-void printM(int **M, const int n);
-void deleteM(int **&M, const int n);
-int** copyM(int **&M, const int n);
+template <typename T>
+void buildM(T **&M, const int n);
+
+template <typename T>
+void fillM(T **&M, const int n, T &soma);
+
+template <typename T>
+void printM(T **M, const int n);
+
+template <typename T>
+void deleteM(T **&M, const int n);
+
+template <typename T>
+T** copyM(T **&M, const int n);
+
+template <typename T>
 void copy_partitionM(
-	int **&M, 
-	int **&M_partition, 
+	T **&M, 
+	T **&M_partition, 
 	const int &partition_size, 
 	const int &col, 
 	const int &lin, 
 	const operationM &param);
 
-#include "myMatrix_fun.h"
+#include "myMatrix.cpp"
 
 #endif

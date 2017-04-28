@@ -1,13 +1,18 @@
+#ifndef MYMATRIX_CPP
+#define MYMATRIX_CPP
 #include "myMatrix.h"
 
-void buildM(int **&M, const int n){
-
-	M = new int*[n];
-	for(int i = 0; i < n; i++) M[i] = new int[n];
+template <typename T>
+void buildM(T **&M, const int n)
+{
+	M = new T*[n];
+	for(int i = 0; i < n; i++) M[i] = new T[n];
 }
 
 //temporary
-void fillM(int **&M, const int n, int &soma){
+template <typename T>
+void fillM(T **&M, const int n, T &soma)
+{
 	for (int i = 0; i < n; ++i)
 	{
 		for (int j = 0; j < n; ++j)
@@ -17,8 +22,9 @@ void fillM(int **&M, const int n, int &soma){
 	}
 }
 
-void printM(int **M, const int n){
-
+template <typename T>
+void printM(T **M, const int n)
+{
 	for (int i = 0; i < n; ++i)
 	{
 		for (int j = 0; j < n; ++j)
@@ -29,20 +35,22 @@ void printM(int **M, const int n){
 	}
 }
 
-void deleteM(int **&M, const int n){
-
+template <typename T>
+void deleteM(T **&M, const int n)
+{
 	for(int i = 0; i < n; i++) delete[] M[i];
 	delete[] M;
 }
 
-int** copyM(int **&M, const int n){
+template <typename T>
+T** copyM(T **&M, const int n){
 	if(n <= 0)
 	{
 		cerr << "em copyM: Tamanho inválido para soma de Matriz." << endl;
 		exit(1);
 	}
 	//else
-	int** M_copy;
+	T** M_copy;
 	buildM(M_copy,n);
 
 	for (int i = 0; i < n; ++i)
@@ -57,12 +65,13 @@ int** copyM(int **&M, const int n){
 }
 
 //transforma em copyM, passando tambem o tamanho da partição
+template <typename T>
 void copy_partitionM(
-	int **&M, 
-	int **&M_partition, 
+	T **&M, 
+	T **&M_partition, 
 	const int &partition_size, 
-	const int &lin, 
 	const int &col, 
+	const int &lin, 
 	const operationM &param)
 {
 	for (int i = 0; i < partition_size; ++i)
@@ -71,8 +80,10 @@ void copy_partitionM(
 		{
 			if(param == Divide)
 	 			M_partition[i][j] = M[lin+i][col+j];
-	 		else //unify
+	 		else //Unife
 	 			M[lin+i][col+j] = M_partition[i][j];
 		}
 	}	
 }
+
+#endif
