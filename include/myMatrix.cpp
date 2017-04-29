@@ -70,8 +70,8 @@ void copy_partitionM(
 	T **&M, 
 	T **&M_partition, 
 	const int &partition_size, 
-	const int &col, 
 	const int &lin, 
+	const int &col, 
 	const operationM &param)
 {
 	for (int i = 0; i < partition_size; ++i)

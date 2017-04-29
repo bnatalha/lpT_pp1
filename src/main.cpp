@@ -10,7 +10,7 @@
 #include "myMatrix.h"	// para buildM(), fillM(), printM(), deleteM;
 #include "myMatrix_calc.h"	// para multiplicaR(), multiplicaI();
 #include "myMatrix_stream.h"	// para readM(), saveM();
-#include "myMatrix_vector.h"	// para readM(), saveM();
+#include "myMatrix_vector.h"	// para build_vectorM(), delete_vectorM();
 
 /**
 * @brief Função main
@@ -31,42 +31,68 @@ int main(int argc, char const *argv[])
 	//Exceção_2 (Argumento invalido)
 
 //[!] Modificar o tipo a ser lido atraves de uma especificação por terminal
-	M_vector<int> *vA = nullptr;
-	M_vector<int> *vB = nullptr;
+	M_vector<int> *vA = NULL;
+	M_vector<int> *vB = NULL;
+	M_vector<int> *vC = NULL;
 	int vSize = argc-1;
 	int *vDimensions = new int[vSize];
 	string dummy;
-
+	
 	// Criando um arranjo de inteiros contendo as dimensões passadas por terminal
 	for (int i = 1; i < argc; ++i)	// pula o primeiro argumento (path do executavel)
 	{
-		dummy = argv[i];
-		vDimensions[i] = std::stoi(dummy);
-
+		dummy = argv[i];		
+		vDimensions[i-1] = std::stoi(dummy);
 	}
 	
 	// Construindo vetores..
 	build_vectorM(vA, vSize, vDimensions);
-
-	//TEST
-	for (int i = 0; i < vSize; ++i)
-	{
-		fillM(vA[i].vectorM, vA[i].dimension, i);
-		cout << "M[" << i <<"]" << vA[i].dimension << "_ :" << endl;
-		printM(vA[i].vectorM, vA[i].dimension, i)
-		cout << endl;
-	}
-
-	delete_vectorM(vA, vSize);
+	build_vectorM(vB, vSize, vDimensions);
+	vC = new M_vector<int>[vSize];
 
 	// Atribuindo valores a vetores...
-	//readM()
+	for (int i = 0; i < vSize; ++i)
+	{
+		streamM(vA[i].vectorM, vA[i].dimension, A);
+		streamM(vB[i].vectorM, vB[i].dimension, B);
+	}
 
-//	C = multiplicaI(A,B,n);
-//	cout << "C:" << endl;
-//	printM(C,n);
+	print_vectorM(vA,vSize);
+	print_vectorM(vB,vSize);
+
+	for (int i = 0; i < vSize; ++i)
+	{
+		vC[i].vectorM = multiplicaI(vA[i].vectorM, vB[i].vectorM, vA[i].dimension);
+		vC[i].dimension = vA[i].dimension;
+	}
+/*
+	cout << "int" << endl;
+	print_vectorM(vC,vSize);
+*/
+	for (int i = 0; i < vSize; ++i)
+	{
+		deleteM(vC[i].vectorM, vC[i].dimension);
+		vC[i].vectorM = multiplicaR(vA[i].vectorM, vB[i].vectorM, vA[i].dimension);
+		vC[i].dimension = vA[i].dimension;
+	}
+
+	cout << "rec" << endl;
+	print_vectorM(vC,vSize);
+
+	// Gravando resultados
+		for (int i = 0; i < vSize; ++i)
+	{
+		streamM(vC[i].vectorM, vC[i].dimension, C);
+	}
+
 	// Se C ja tiver apontando pra 'algo', deletar 'algo' antes de apontar C para um novo lugar.
-//	deleteM(C,n);
+	//deleteM(C,n);
+
+	// Deletando vA, vB e vDimensions 
+	delete_vectorM(vA, vSize);
+	delete_vectorM(vB, vSize);
+	delete_vectorM(vC, vSize);
+	delete[] vDimensions;
 
 	return 0;
 }
