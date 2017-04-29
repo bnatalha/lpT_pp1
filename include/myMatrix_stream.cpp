@@ -79,9 +79,10 @@ void streamM(T** &M_dxd, const int dimension, M_type param)
 	{
 		for (int j = 0; j < dimension; ++j)
 		{
-			if(param == C) M_stream << M_dxd[i][j];
+			if(param == C) M_stream << M_dxd[i][j] << " ";
 			else M_stream >> M_dxd[i][j];
 		}
+		if(param == C) M_stream << endl;
 	}
 
 	// Fecha a stream.

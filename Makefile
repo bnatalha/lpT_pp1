@@ -33,7 +33,7 @@ doc: Doxyfile
 
 #checar vazamento de memoria.
 val:
-	valgrind --leak-check=yes bin/main 256
+	valgrind --leak-check=yes bin/main 4
 
 #gerar executaveis.
 bin/main: bin/main.o
