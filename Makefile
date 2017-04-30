@@ -7,7 +7,7 @@
 CPPFLAGS += -Wall -std=c++11 -pedantic -O0 -g
 INC =-I include
 
-.PHONY: all init val clean test
+.PHONY: all init val clean test vai
 
 #compilar tudo.
 all: init bin/main clean
@@ -16,7 +16,7 @@ all: init bin/main clean
 test: init bin/counting clean
 
 #roda test
-vai: bin/counting
+vai:
 	bin/counting
 
 #verifica se existe as pasta 'bin' no diretorio atual e, caso não exita, a cria.
@@ -33,20 +33,26 @@ doc: Doxyfile
 
 #checar vazamento de memoria.
 val:
-	valgrind --leak-check=yes bin/main 4
+	valgrind --leak-check=yes bin/main 2
 
 #gerar executaveis.
-bin/main: bin/main.o
+bin/main: bin/main.o bin/myMatrix_stats.o
 	g++ $^ -o $@
 
-bin/counting: bin/counting.o
+bin/counting: bin/counting.o bin/foo.o
 	g++ $^ -o $@
 
 #gerar objetos.
 bin/main.o: src/main.cpp
 	g++ $(CPPFLAGS) $< $(INC) -c -o $@
 
+bin/myMatrix_stats.o: src/myMatrix_stats.cpp
+	g++ $(CPPFLAGS) $< $(INC) -c -o $@
+
 bin/counting.o: test/counting.cpp
+	g++ $(CPPFLAGS) $< $(INC) -c -o $@
+
+bin/foo.o: test/foo.cpp
 	g++ $(CPPFLAGS) $< $(INC) -c -o $@
 
 #remover .o's.

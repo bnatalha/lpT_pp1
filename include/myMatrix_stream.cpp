@@ -2,46 +2,7 @@
 #define MYMATRIX_STREAM_CPP
 
 #include "myMatrix_stream.h"
-/*
-template <typename T>
-void readM(T** &M_dxd, const int dimension, M_type param)
-{
-	// Monta o nome do arquivo de entrada a partir da dimensão e 'param' especificada
-	string input_filename ("data/input/");
-	input_filename += (param == A?'A':'B');
-	input_filename += std::to_string(dimension);
-	input_filename += 'x';
-	input_filename += std::to_string(dimension);
-	input_filename += ".txt";
 
-	// Abre stream de entrada para leitura de Matriz
-	ifstream M_input (input_filename.c_str());
-
-	// Caso a stream não tenha aberto com sucesso
-	if(!M_input){
-		cerr <<	"Houve algo errado ao tentar abrir " << input_filename << "." << endl;
-		exit(1);
-	}
-	
-	string stream_holder;
-	
-	// Ignora primera linha
-	getline(M_input, stream_holder);
-//[!] Checar dimensões da Matriz() ?
-
-	// Armazena tudo
-	for (int i = 0; i < dimension; ++i)
-	{
-		for (int j = 0; j < dimension; ++j)
-		{
-			M_input >> M_dxd[i][j];
-		}
-	}
-
-	// Fecha a stream.
-	M_input.close();
-}
-*/
 template <typename T>
 void streamM(T** &M_dxd, const int dimension, M_type param)
 {
@@ -87,8 +48,6 @@ void streamM(T** &M_dxd, const int dimension, M_type param)
 
 	// Fecha a stream.
 	M_stream.close();
-
-
 }
 
 #endif
