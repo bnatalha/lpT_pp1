@@ -12,13 +12,6 @@ INC =-I include
 #compilar tudo.
 all: init bin/main clean
 
-#compila test
-test: init bin/counting clean
-
-#roda test
-vai:
-	bin/counting
-
 #verifica se existe as pasta 'bin' no diretorio atual e, caso não exita, a cria.
 #mesmo para a pasta 'output' em data/.
 init:
@@ -39,20 +32,11 @@ val:
 bin/main: bin/main.o bin/myMatrix_stats.o
 	g++ $^ -o $@
 
-bin/counting: bin/counting.o bin/foo.o
-	g++ $^ -o $@
-
 #gerar objetos.
 bin/main.o: src/main.cpp
 	g++ $(CPPFLAGS) $< $(INC) -c -o $@
 
 bin/myMatrix_stats.o: src/myMatrix_stats.cpp
-	g++ $(CPPFLAGS) $< $(INC) -c -o $@
-
-bin/counting.o: test/counting.cpp
-	g++ $(CPPFLAGS) $< $(INC) -c -o $@
-
-bin/foo.o: test/foo.cpp
 	g++ $(CPPFLAGS) $< $(INC) -c -o $@
 
 #remover .o's.
