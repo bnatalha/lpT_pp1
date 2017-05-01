@@ -125,9 +125,9 @@ int main(int argc, char const *argv[])
 				<< std::chrono::duration<double,std::deci> (timing).count() <<"ds) ("
 				<< std::chrono::duration_cast<std::chrono::seconds> (timing).count() <<"s)" << endl;
 		}
+		cout << "\n\t\tI--------------------------------I--------------------------------I\n\n\n";
 		cout << "Done dimension.\n\n";
 	}
-	cout << "\n\t\tI--------------------------------I--------------------------------I\n";
 	
 	// ======================================================================================
 	// ================================= RECURSIVO ==========================================
@@ -169,8 +169,8 @@ int main(int argc, char const *argv[])
 				<< std::chrono::duration_cast<std::chrono::seconds> (timing).count() <<"s)" << endl;
 		}
 		cout << "Done dimension.\n\n";		
+		cout << "\n\t\tR--------------------------------R--------------------------------R\n\n\n";
 	}
-	cout << "\n\t\tR--------------------------------R--------------------------------R\n";
 	cout << "...Done.\n=========================================================================================================\n";
 
 	// Gravando matrizes produtos

@@ -21,7 +21,6 @@ double time_peaks( myTiming *&vTime, const myStats_type &param );
 double sum_times( myTiming *&vTime);
 double desvp_times( myTiming *&vTime, const double &myMedia_times);
 
-// não reconhece interative como lvalue
 void save_times( const myMatrix_Stats *vStats, const int &vSize, const int *vDim, const char *filename);
 
 

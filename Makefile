@@ -24,9 +24,9 @@ init:
 
 #verifica se existe as pasta docs/ no diretorio atual e, caso não exita, a cria;
 #gera a documentação na pasta docs.
-doc: Doxyfile
-	mkdir -p docs ;\
-	doxygen	
+#doc: Doxyfile
+#	mkdir -p docs ;\
+#	doxygen	
 
 #checar vazamento de memoria.
 val:

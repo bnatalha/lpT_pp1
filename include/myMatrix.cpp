@@ -9,19 +9,6 @@ void buildM(T **&M, const int n)
 	for(int i = 0; i < n; i++) M[i] = new T[n];
 }
 
-//temporary
-template <typename T>
-void fillM(T **&M, const int n, T &soma)
-{
-	for (int i = 0; i < n; ++i)
-	{
-		for (int j = 0; j < n; ++j)
-		{
-			M[i][j] = soma++;
-		}
-	}
-}
-
 template <typename T>
 void printM(T **M, const int n)
 {
@@ -42,29 +29,6 @@ void deleteM(T **&M, const int n)
 	delete[] M;
 }
 
-template <typename T>
-T** copyM(T **&M, const int n){
-	if(n <= 0)
-	{
-		cerr << "em copyM: Tamanho inválido para soma de Matriz." << endl;
-		exit(1);
-	}
-	//else
-	T** M_copy;
-	buildM(M_copy,n);
-
-	for (int i = 0; i < n; ++i)
-	{
-		for (int j = 0; j < n; ++j)
-		{
-			M_copy[i][j] = M[i][j];
-		}
-	}
-
-	return M_copy;
-}
-
-//transforma em copyM, passando tambem o tamanho da partição
 template <typename T>
 void copy_partitionM(
 	T **&M, 

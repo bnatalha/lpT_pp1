@@ -11,12 +11,6 @@ Cada linha dos arquivos `.dat` possui (i) a _dimensão_ das matrizes utilizadas 
 
 `$ make`
 
-### Gerando Documentação:
-
-Documentação (a ser completada) no formato _.html_ será gerada em `docs/`
-
-`$ make doc`
-
 ### Executando:
 
 __ATENÇÃO__ : utilize __apenas__ valores que são __potências de base 2__ como argumentos.
