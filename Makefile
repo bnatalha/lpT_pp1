@@ -3,8 +3,12 @@
 # -ansi: "In C++ mode, it is equivalent to `-std=c++98'."
 # https://gcc.gnu.org/onlinedocs/gcc-4.3.2/gcc/C-Dialect-Options.html#C-Dialect-Options
 
-#CPPFLAGS += -Wall -std=c++11 -pedantic
-CPPFLAGS += -Wall -std=c++11 -pedantic -O0 -g
+# Para rodar teste
+CPPFLAGS += -Wall -std=c++11 -pedantic -O0
+
+# Para debug
+#CPPFLAGS += -Wall -std=c++11 -pedantic -O0 -g
+
 INC =-I include
 
 .PHONY: all init val clean test vai
